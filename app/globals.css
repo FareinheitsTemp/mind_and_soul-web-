@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FAF6EF;
+  --beige: #EADFCB;
+  --lavender: #C9B8E8;
+  --lavender-d: #8E75C7;
+  --lavender-deep: #6D55A6;
+  --rose: #F5D5DD;
+  --rose-d: #D9AAB6;
+  --sage: #A9BFA3;
+  --sage-d: #7A9674;
+  --ink: #3B3548;
+  --ink-light: #635C73;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background-color: var(--cream);
+  selection-background-color: var(--lavender);
+  selection-color: var(--ink);
+}
+
+::selection {
+  background-color: #C9B8E8;
+  color: #231F2C;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Paper Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(250, 246, 239, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 223, 203, 0.5);
+  box-shadow: 0 12px 35px -10px rgba(142, 117, 199, 0.1);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(142, 117, 199, 0.45);
+  box-shadow: 0 22px 45px -12px rgba(142, 117, 199, 0.22);
+}
+
+/* Marker Highlight Effect */
+.marker-highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.marker-highlight::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 4px;
+  height: 38%;
+  background-color: var(--lavender);
+  opacity: 0.55;
+  z-index: -1;
+  border-radius: 4px;
+  transform: rotate(-0.5deg);
+  transition: opacity 0.3s ease;
+}
+
+.marker-highlight-rose::before {
+  background-color: var(--rose);
+}
+
+.marker-highlight-sage::before {
+  background-color: var(--sage);
+}
+
+/* Floating Blob Shapes */
+.blob-shape-1 {
+  border-radius: 64% 36% 70% 30% / 30% 60% 40% 70%;
+}
+
+.blob-shape-2 {
+  border-radius: 40% 60% 35% 65% / 60% 35% 65% 40%;
+}
+
+.blob-shape-3 {
+  border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9B8E8;
+  border-radius: 9999px;
+  border: 2px solid var(--cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8E75C7;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
